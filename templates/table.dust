@@ -1,0 +1,30 @@
+<h2>
+    <span class="name">{time}</span>
+    <span class="date">{date}</span>
+</h2>
+<div class="table-holder">
+    <table>
+        <thead>
+        <tr>
+            <th class="table-cell_group">Group 1</th>
+            <th class="table-cell_group">Group 2</th>
+            <th class="table-cell_service">Service</th>
+            <th class="table-cell_dev">dev</th>
+            <th class="table-cell_chart">Chart</th>
+            <th class="table-cell_new">New trend</th>
+        </tr>
+        </thead>
+        <tbody>
+        {#data}
+        <tr>
+            <td class="table-cell_group">{Group1}</td>
+            <td class="table-cell_group">{Group2}</td>
+            <td class="table-cell_service">{Service}</td>
+            <td class="table-cell_dev">{dev}</td>
+            <td class="table-cell_chart"><a href="{chartLink}" target="_blank" title="Go to Chart">Chart</a></td>
+            <td class="table-cell_new">{newTrend}</td>
+        </tr>
+        {/data}
+        </tbody>
+    </table>
+</div>

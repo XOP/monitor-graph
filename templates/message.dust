@@ -1,0 +1,15 @@
+<h2>
+    <span class="name">{time}</span>
+    <span class="date">{date}</span>
+</h2>
+<div class="message {?info}__info{/info} {?alert}__alert{/alert}">
+    {?alert}
+        {alert}
+    {:else}
+        {?info}
+            {info}
+        {:else}
+            All systems seem to be OK!
+        {/info}
+    {/alert}
+</div>

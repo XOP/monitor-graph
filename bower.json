@@ -1,0 +1,20 @@
+{
+  "name": "monitoring",
+  "version": "0.1.0",
+  "authors": [
+    "stewiekillsloiss@gmail.com"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "skeleton": "~2.0.4",
+    "dustjs-linkedin": "~2.7.0",
+    "zepto": "~1.1.6"
+  }
+}

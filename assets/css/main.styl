@@ -1,0 +1,559 @@
+/* Monitor graph
+---------------------------------------------------------------------------------- */
+
+/*
+    #monitor
+
+    monitor . row
+        column
+            data
+                [1]
+                    <table>
+
+                [2]
+                    message
+                        ...
+                [/]
+
+            [
+            graph
+                <graph>
+            ]
+*/
+
+
+/* Core
+-------------------------------------------------- */
+
+body {
+    font-size: 1.6rem;
+    font-family: Tahoma, Geneva, sans-serif;
+
+    color: $c-main;
+    background-color: $bg-main;
+
+    overflow-y: scroll;
+    }
+
+.container {
+    max-width: 1400px;
+    padding: 0 $grid;
+    width: 80%;
+    }
+
+a {
+    color: $c-brand;
+
+    &:hover {
+        color: lighten($c-brand, 30%);
+        }
+    }
+
+/* /Core */
+
+
+/* Flex containers
+-------------------------------------------------- */
+
+html {
+    height: 100%;
+    }
+
+body {
+    min-height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    }
+
+main {
+    flex-grow: 1;
+    }
+
+/* /Flex containers */
+
+
+/* Common
+-------------------------------------------------- */
+
+/* Message */
+
+.message {
+    font-size: 1.6rem;
+    text-align: center;
+    }
+
+/* /Message */
+
+/* Button */
+
+button,
+.button {
+    transition: background-color .15s ease;
+
+    &:hover {
+        border-color: $bg-brand-2;
+        }
+
+    &:active {
+        border-color: $bg-brand;
+        transform: translateY(1px);
+        }
+    }
+
+/* /Button */
+
+/* Notification */
+
+.notification {
+    cover();
+    position: fixed;
+    z-index: 100;
+    background: rgba(255, 255, 255, .8);
+
+    visibility: hidden;
+    opacity: 0;
+
+    transition: opacity .15s ease, visibility 0s .15s;
+
+    &.__active {
+        visibility: visible;
+        opacity: 1;
+
+        transition-delay: 0s;
+        }
+
+    .message {
+        position: absolute;
+        left: 0; right: 0; top: 0;
+        z-index: 1000;
+
+        padding: ($line*2) $grid;
+
+        color: $c-inv;
+        background: $bg-brand;
+        box-shadow: 0 1px 5px - 1px rgba(0, 0, 0, .7);
+
+        transition: transform .3s ease-out;
+        transform: translateY(-100px);
+
+        cursor: pointer;
+        }
+
+        &.__active .message {
+            transform: translateY(0);
+            }
+    }
+
+/* /Notification */
+
+/* /Common */
+
+
+/* Header
+-------------------------------------------------- */
+
+header {
+    padding: $line 0;
+    margin-bottom: $line * 4;
+
+    background: $bg-inv;
+    color: $c-inv;
+
+    h1 {
+        margin: 0;
+        font-size: 3.2rem;
+        }
+    }
+
+/* /Header */
+
+
+/* Footer
+-------------------------------------------------- */
+
+footer {
+    border-top: 1px solid $bg-alt;
+    padding: ($line * 2) 0;
+
+    color: $c-alt;
+    }
+
+/* /Footer */
+
+
+/* Main
+-------------------------------------------------- */
+
+main {
+    margin-bottom: $line * 4;
+
+    &.__loading {
+        preloader();
+
+        &:after {
+            content: "Loading data, please wait..."
+            position: absolute;
+            top: 50%; margin-top: 50px;
+            left: 0; right: 0;
+            text-align: center;
+
+            font-size: 1em;
+            color: $c-aux;
+            white-space: nowrap;
+            }
+
+        .container,
+        .container *,
+        .container *:before,
+        .container *:after {
+            visibility: hidden;
+            }
+        }
+
+    // rows
+    .row {
+        margin-bottom: $line * 4;
+        }
+
+    // headers
+    h2 {
+        font-size: 2.2rem;
+        height: 30px;
+        margin-bottom: $line;
+        padding: ($line / 2) ($grid / 4);
+        box-sizing: border-box;
+
+        &.invisible {
+            &:after {
+                content: ".";
+                }
+            }
+
+        .name {
+            }
+
+        .date {
+            color: $c-aux;
+            margin-left: $grid;
+            }
+        }
+    }
+
+
+/* Data */
+
+.data {
+    font-size: 1.2rem;
+
+    // table container
+    .table-holder {
+        border-top: 1px solid $bg-brand;
+
+        overflow-y: auto;
+        max-height: ($graph - 48px);
+        }
+
+    // table
+    table {
+        width: 100%;
+        table-layout: fixed;
+
+        margin: 0;
+        }
+
+    td {
+        padding: ($line / 2) ($grid / 4);
+        font-size: 1rem;
+        }
+
+    th {
+        padding: ($line) ($grid / 4);
+        background: $bg-brand-inv;
+        }
+
+        tr:hover td {
+            background: $bg-touch;
+            }
+
+    // table cells
+    .table-cell_group,
+    .table-cell_service {
+        width: 20%;
+        }
+
+    .table-cell_dev,
+    .table-cell_chart,
+    .table-cell_new {
+        width: 10%;
+        }
+
+        .table-cell_dev,
+        .table-cell_chart {
+            font-size: 1.2rem;
+            }
+
+    // message
+    .message {
+        padding: ($line) ($grid*2);
+        border: 1px solid $bg-alt;
+        margin: 0 auto;
+
+        border-radius: 4px;
+        text-align: center;
+        font-size: 1.6rem;
+        background: $bg-touch;
+        color: $c-main;
+
+        &.__info {
+            background: $bg-brand-2;
+            border-color: $bg-brand;
+            color: $c-inv;
+            }
+
+        &.__alert {
+            background: $bg-special;
+            border-color: $bg-inv;
+            color: $c-inv;
+            }
+        }
+    }
+
+/* /Data */
+
+
+/* Graph */
+
+.graph {
+    $p = 4px;
+
+    position: relative;
+
+    padding: $p;
+    width: $graph - ($p * 2);
+    height: $graph - ($p * 2);
+    box-sizing: border-box;
+
+    background: $bg-brand;
+
+    border-radius: 4px;
+
+    // hide empty container
+    &:empty {
+        display: none;
+        }
+    }
+
+/* /Graph */
+
+
+/* Controls */
+
+button.control {
+    padding: ($line/2) ($grid/4);
+    line-height: 20px;
+    height: auto;
+    font-size: 10px;
+    }
+
+    .control-info {
+        background-color: transparentify($bg-brand, #fff, .1);
+        }
+
+    .control-alert {
+        background-color: transparentify($bg-special, #fff, .1);
+        }
+
+.controls {
+
+    }
+
+/* /Controls */
+
+
+/* Row */
+
+.monitor {
+    position: relative;
+    clearfix();
+
+    padding: $line $grid;
+    margin: 0 (-($grid));
+    border-radius: 12px;
+
+    background-color: $bg-main;
+    transition: background-color .5s ease-out;
+
+    // loading state
+    &.__loading {
+        background-color: $bg-brand-inv;
+        }
+
+    // hidden state
+    &.__hidden {
+
+        .graph,
+        table {
+            display: none;
+            }
+
+        h2,
+        .message {
+            opacity: .4;
+            }
+
+        .control {
+
+            // control text
+            .__hidden {
+                display: inline;
+                }
+            .__visible {
+                display: none;
+                }
+            }
+
+        .controls {
+            opacity: 1;
+            visibility: visible;
+            }
+        }
+
+    // components
+    .data {
+        margin-right: ($graph + $gap);
+        }
+
+    .graph {
+        float: right;
+        }
+
+    .control {
+        margin: 0 0 0 ($grid/4);
+
+        // control text
+        .__hidden {
+            display: none;
+            }
+        .__visible {
+            display: inline;
+            }
+        }
+
+    .controls {
+        position: absolute;
+        right: 100%; top: $line*1.5;
+
+        white-space: nowrap;
+
+        opacity: 0;
+        visibility: hidden;
+
+        transition: opacity .2s ease, visibility .2s .2s;
+        }
+        &:hover .controls {
+            opacity: 1;
+            visibility: visible;
+            transition-delay: 0s;
+            }
+    }
+
+/* /Row */
+
+/* /Main */
+
+
+/* Refresh
+-------------------------------------------------- */
+
+.refresh {
+    $h = 40px;
+
+    position: relative;
+    height: $h;
+    text-align: center;
+
+    &:after {
+        preloader();
+        cover();
+
+        content: "";
+        position: absolute;
+        z-index: 10;
+        background-color: rgba(255,255,255,.9);
+
+        transition: opacity .3s ease, visibility 0s .3s;
+
+        visibility: hidden;
+        opacity: 0;
+        }
+        &.__loading {
+            &:after {
+                visibility: visible;
+                opacity: 1;
+
+                transition-delay: 0s;
+                }
+            }
+
+    button {
+        vertical-align: middle;
+        margin: 0;
+        }
+
+    .message {
+        position: absolute;
+        z-index: 10;
+        background-color: $bg-brand-2;
+        color: $c-inv;
+        border-radius: 4px;
+
+        height: $h;
+        width: 50%;
+        left: 25%;
+        line-height: $h;
+
+        transition: opacity .3s ease, visibility 0s .3s;
+
+        visibility: hidden;
+        opacity: 0;
+        }
+        &.__message .message {
+            visibility: visible;
+            opacity: 1;
+
+            transition-delay: 0s;
+            }
+    }
+
+/* /Refresh */
+
+
+/* Placeholders
+-------------------------------------------------- */
+
+.stub {
+    background: $bg-brand;
+    height: 300px;
+    }
+
+/* /Placeholders */
+
+
+/* Utility
+-------------------------------------------------- */
+
+.invisible {
+    visibility: hidden;
+    }
+
+.hidden {
+    display: none;
+    }
+
+/* /Utility */
+
+
+/* /Monitor graph
+---------------------------------------------------------------------------------- */

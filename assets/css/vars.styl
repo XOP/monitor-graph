@@ -1,0 +1,70 @@
+/* Vars
+---------------------------------------------------------------------------------- */
+
+//
+// INCLUDABLE!
+// VARS ONLY
+//
+
+/* Variables
+-------------------------------------------------- */
+
+$bg-main = #fff;
+$bg-inv = #212121;
+$bg-alt = #B6B6B6;
+$bg-touch = lighten($bg-alt, 80%);
+$bg-brand = #0288D1;
+$bg-brand-2 = #03A9F4;
+$bg-brand-inv = #B3E5FC;
+$bg-special = #F40343;
+
+$c-main = #212121;
+$c-aux = #607D8B;
+$c-alt = #727272;
+$c-brand = #03A9F4;
+$c-inv = #fff;
+
+$line = .8rem;
+$grid = 2vw;
+
+$graph = 800px;
+$gap = 40px;
+
+/* /Variables */
+
+
+/* Mixin
+-------------------------------------------------- */
+
+clearfix(){
+    &:before,
+    &:after {
+        content: '';
+        display: table;
+        }
+
+    &:after {
+        clear: both;
+        }
+    }
+
+preloader($inline=false){
+    background: url(../../img/spinner.gif) no-repeat 50%;
+
+    if($inline){
+        width: 32px;
+        height: 32px;
+
+        display: inline-block;
+        vertical-align: middle;
+        }
+    }
+
+cover(){
+    top: 0; right: 0; bottom: 0; left: 0;
+    }
+
+/* /Mixin */
+
+/* /Vars
+---------------------------------------------------------------------------------- */

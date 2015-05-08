@@ -1,0 +1,44 @@
+{
+  "name": "express-dummy",
+  "version": "1.2.0",
+  "description": "Quick start with application development on your terms",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/XOP/express-dummy.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "gulp",
+    "dummy",
+    "build",
+    "bootstrap"
+  ],
+  "author": "stewiekillsloiss@gmail.com",
+  "dependencies": {
+    "colors": "^1.0.3",
+    "compression": "^1.4.3",
+    "ejs": "^2.2.3",
+    "express": "^4.11.1"
+  },
+  "devDependencies": {
+    "autoprefixer-stylus": "^0.5.0",
+    "browser-sync": "^2.6.4",
+    "del": "^1.1.1",
+    "grunt": "^0.4.5",
+    "gulp": "^3.8.10",
+    "gulp-concat": "^2.5.2",
+    "gulp-concat-css": "^2.2.0",
+    "gulp-grunt": "^0.5.2",
+    "gulp-if": "^1.2.5",
+    "gulp-load-plugins": "^0.10.0",
+    "gulp-minify-css": "^1.0.0",
+    "gulp-nodemon": "^2.0.2",
+    "gulp-run-sequence": "^0.3.2",
+    "gulp-stylus": "^2.0.1",
+    "gulp-uglify": "^1.2.0",
+    "gulp-zip": "^3.0.2",
+    "merge2": "^0.3.5"
+  }
+}

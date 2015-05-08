@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include partials/head.ejs %>
+</head>
+<body>
+
+<% include partials/header.ejs %>
+
+<main class="__loading">
+    <!-- controls -->
+    <div class="container" id="controls">
+        <div class="row">
+            <div class="refresh">
+                <div class="message">
+                    No data yet. Please check later.
+                </div>
+                <button id="refresh" class="js-refresh">
+                    Check updates
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- table data -->
+    <div class="container" id="content"></div>
+</main>
+
+<% include partials/footer.ejs %>
+<div class="notification"><div class="message"></div></div>
+
+<% include partials/scriptsBottom.ejs %>
+</body>
+</html>

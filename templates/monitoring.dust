@@ -1,0 +1,21 @@
+<div class="row monitor" id="{id}">
+    <div class="column">
+        <div class="graph" id="{gId}">
+            <!-- graph here -->
+        </div>
+        <div class="data" id="{tId}">
+            <!-- data here -->
+        </div>
+    </div>
+    <div class="controls">
+        <button class="control js-remove control-alert">
+            remove
+        </button>
+        {!
+        <button class="control js-hide control-info">
+            <span class="__hidden">show</span>
+            <span class="__visible">hide</span>
+        </button>
+        !}
+    </div>
+</div>

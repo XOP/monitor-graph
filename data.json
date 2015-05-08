@@ -1,0 +1,8 @@
+{
+    "version" : "0.1.0",
+    "title" : "Monitor Graph",
+    "columns" : {
+        "one" : "eight",
+        "two" : "four"
+    }
+}

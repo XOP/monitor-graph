@@ -1,0 +1,11 @@
+# dev
+node_modules
+bower_components
+*.iml
+*.log
+*.zip
+.idea
+
+# static
+public
+assets/js/vendor/sigma/build
