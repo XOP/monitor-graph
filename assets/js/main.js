@@ -170,7 +170,7 @@ function renderGraph(id, data){
     };
 
     // create sigma instance
-    s = new sigma({
+    var s = new sigma({
         graph: g,
         container: id,
         renderer: {
